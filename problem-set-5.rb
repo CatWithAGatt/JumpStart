@@ -18,28 +18,19 @@ puts chunk([10, 9, 8, 7, 6, 5, 4], 3) == [[10, 9, 8], [7, 6, 5], [4]]
 # Translate into pig-latin! First consonants go to the end of a word. End with "ay"
 def pig_latin(words)
 	vowels = ['a', 'e', 'i', 'o', 'u']
-
 	words = words.split(" ")
 
 	words.each do |x|
 		if vowels.include? x[0]
 			x << 'ay'
-		elsif vowels.include? x[1]
-			if x[0] == 'q'
-				letter = x.slice! 0, 2
-			else
-				letter = x.slice! 0
-			end
-			x << letter + 'ay'
-		elsif vowels.include? x[2]
-			if x[1] == 'q'
-				letter = x.slice! 0, 3
-			else
-				letter = x.slice! 0, 2
-			end
-			x << letter + 'ay'
-		else
-			letter = x.slice! 0, 3
+    else
+		  if vowels.include? x[1]
+			  letter = (x[0] == 'q') ? x.slice!(0, 2) : x.slice!(0)
+		  elsif vowels.include? x[2]
+			  letter = (x[1] == 'q') ? x.slice!(0, 3) : x.slice!(0, 2)
+		  else
+			  letter = x.slice! 0, 3
+      end
 			x << letter + 'ay'
 		end
 	end
