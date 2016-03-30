@@ -24,14 +24,14 @@ def pig_latin(words)
 		if vowels.include? x[0]
 			x << 'ay'
     else
-		  if vowels.include? x[1]
-			  letter = (x[0] == 'q') ? x.slice!(0, 2) : x.slice!(0)
-		  elsif vowels.include? x[2]
-			  letter = (x[1] == 'q') ? x.slice!(0, 3) : x.slice!(0, 2)
-		  else
-			  letter = x.slice! 0, 3
+      if vowels.include? x[1]
+        letter = (x[0] == 'q') ? x.slice!(0, 2) : x.slice!(0)
+      elsif vowels.include? x[2]
+        letter = (x[1] == 'q') ? x.slice!(0, 3) : x.slice!(0, 2)
+      else
+        letter = x.slice! 0, 3
       end
-			x << letter + 'ay'
+      x << letter + 'ay'
 		end
 	end
 
